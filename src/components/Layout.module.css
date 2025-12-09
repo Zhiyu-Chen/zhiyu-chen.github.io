@@ -132,6 +132,10 @@
 }
 
 /* Mobile Adjustments */
+.mobileText {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .header {
         height: auto;
@@ -178,8 +182,4 @@
     .mobileText {
         display: inline;
     }
-}
-
-.mobileText {
-    display: none;
 }
