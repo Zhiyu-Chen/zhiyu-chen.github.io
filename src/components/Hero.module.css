@@ -16,13 +16,17 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: -0.05rem;
-    color: var(--foreground);
+    color: #111;
+    /* Solid dark color */
 }
 
+/* Replaced highlight with a solid elegant color, or just rely on title color. 
+   If we want a slight distinction for the name, we can use a slightly lighter grey or a subtle blue,
+   but user asked to remove "ugly" color. Let's make it inherit or solid black/dark grey. */
 .highlight {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #000;
+    background: none;
+    -webkit-text-fill-color: initial;
 }
 
 .bio {
@@ -34,34 +38,29 @@
 
 .socials {
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
 }
 
 .socialLink {
-    font-weight: 600;
-    color: #444;
-    position: relative;
-    padding-bottom: 2px;
+    color: #555;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    background: transparent;
 }
 
 .socialLink::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background: var(--accent-gradient);
-    transition: width 0.3s ease;
-}
-
-.socialLink:hover::after {
-    width: 100%;
+    display: none;
 }
 
 .socialLink:hover {
     color: var(--accent);
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
 }
 
 .imageWrapper {
