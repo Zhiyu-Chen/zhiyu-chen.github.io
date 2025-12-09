@@ -20,11 +20,17 @@ export default function Education() {
       </div>
       <style jsx>{`
         .edu-item {
-          margin-bottom: 2rem;
-          background: var(--card-bg);
+          margin-bottom: 1.5rem;
+          background: white;
           padding: 1.5rem;
-          border-radius: 8px;
+          border-radius: 12px;
           border: 1px solid var(--card-border);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .edu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
         }
         h3 {
           font-size: 1.2rem;
@@ -33,11 +39,12 @@ export default function Education() {
         }
         .school {
           color: var(--accent);
-          margin-bottom: 0.25rem;
+          margin-bottom: 0.4rem;
+          font-weight: 500;
         }
         .details {
           font-size: 0.9rem;
-          color: #888;
+          color: #666;
         }
       `}</style>
     </Section>

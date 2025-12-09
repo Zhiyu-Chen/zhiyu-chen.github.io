@@ -16,17 +16,18 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: -0.05rem;
+    color: var(--foreground);
 }
 
 .highlight {
-    background: linear-gradient(120deg, var(--accent), #ff0080);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .bio {
     font-size: 1.25rem;
-    color: #888;
+    color: #555;
     line-height: 1.6;
     margin-bottom: 2rem;
 }
@@ -39,7 +40,7 @@
 
 .socialLink {
     font-weight: 600;
-    color: var(--foreground);
+    color: #444;
     position: relative;
     padding-bottom: 2px;
 }
@@ -51,7 +52,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--accent);
+    background: var(--accent-gradient);
     transition: width 0.3s ease;
 }
 
@@ -75,12 +76,14 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--card-border);
-    transition: border-color 0.3s ease;
+    border: 4px solid white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profileImage:hover {
-    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -90,7 +93,7 @@
         gap: 2rem;
     }
 
-    .actions {
+    .socials {
         justify-content: center;
     }
 }

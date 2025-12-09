@@ -46,6 +46,12 @@ export default function Services() {
             font-size: 1.1rem;
             color: var(--accent);
             margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        ul {
+          list-style: disc;
+          padding-left: 1.5rem;
+          color: #444;
         }
         .pc-list {
             display: flex;
@@ -55,18 +61,20 @@ export default function Services() {
             padding: 0;
         }
         .pc-list li {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border: 1px solid var(--card-border);
             padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            color: #bdbdbd;
-            transition: background 0.2s;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #555;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .pc-list li:hover {
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
             color: var(--accent);
             border-color: var(--accent);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
       `}</style>
     </Section>

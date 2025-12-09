@@ -131,9 +131,9 @@ export default function Publications() {
           padding: 0;
         }
         li {
-          margin-bottom: 2rem;
-          line-height: 1.6;
-          color: #bdbdbd;
+          margin-bottom: 1.5rem;
+          line-height: 1.7;
+          color: #555;
         }
         .title {
           font-weight: 600;
@@ -144,6 +144,7 @@ export default function Publications() {
           color: var(--accent);
           display: block;
           margin-top: 0.25rem;
+          font-size: 0.95em;
         }
       `}</style>
     </Section>

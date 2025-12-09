@@ -33,8 +33,12 @@ export default function Experience() {
       <style jsx>{`
         .exp-item {
           margin-bottom: 2.5rem;
-          padding-left: 1rem;
-          border-left: 2px solid var(--card-border);
+          padding-left: 1.5rem;
+          border-left: 3px solid var(--card-border);
+          transition: border-color 0.3s ease;
+        }
+        .exp-item:hover {
+            border-color: var(--accent);
         }
         h3 {
           font-size: 1.2rem;
@@ -43,18 +47,19 @@ export default function Experience() {
         .company {
           color: var(--accent);
           margin: 0.25rem 0;
-          font-weight: 500;
+          font-weight: 600;
         }
         .duration {
           font-size: 0.9rem;
           color: #666;
-          margin-bottom: 1rem;
+          margin-bottom: 0.8rem;
         }
         .responsibilities {
             list-style: disc;
             padding-left: 1.2rem;
-            color: #ccc;
+            color: #444;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
         .responsibilities li {
             margin-bottom: 0.4rem;

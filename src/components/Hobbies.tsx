@@ -24,14 +24,16 @@ export default function Hobbies() {
           gap: 1.5rem;
         }
         .hobby-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border: 1px solid var(--card-border);
             padding: 1.5rem;
             border-radius: 12px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .hobby-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             border-color: var(--accent);
         }
         h3 {
@@ -40,7 +42,7 @@ export default function Hobbies() {
             color: var(--foreground);
         }
         p {
-            color: #888;
+            color: #666;
             font-size: 0.95rem;
         }
       `}</style>

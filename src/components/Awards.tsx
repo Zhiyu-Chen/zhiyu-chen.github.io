@@ -25,7 +25,7 @@ export default function Awards() {
         }
         li {
           margin-bottom: 0.8rem;
-          color: #bdbdbd;
+          color: #555;
           display: flex;
           align-items: baseline;
         }
