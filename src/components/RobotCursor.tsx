@@ -5,22 +5,27 @@ export default function RobotCursor() {
     const cursorRef = useRef<HTMLDivElement>(null);
     const targetPos = useRef({ x: 0, y: 0 });
     const currentPos = useRef({ x: 0, y: 0 });
+    const movingAxis = useRef<'x' | 'y' | null>(null); // Use ref for mutable state
     const [isExcited, setIsExcited] = useState(false);
     const [direction, setDirection] = useState('right');
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        // Initialize position off-screen or center
+        // Initialize position off-screen or center + scroll
         if (typeof window !== 'undefined') {
-            targetPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            currentPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            const startX = (window.innerWidth / 2) + window.scrollX;
+            const startY = (window.innerHeight / 2) + window.scrollY;
+            targetPos.current = { x: startX, y: startY };
+            currentPos.current = { x: startX, y: startY };
         }
 
         const handleMouseMove = (e: MouseEvent) => {
-            targetPos.current = { x: e.clientX, y: e.clientY };
+            // Use page coordinates for absolute positioning
+            targetPos.current = { x: e.pageX, y: e.pageY };
+
             // Direction update immediately on mouse move for responsiveness
-            if (e.clientX < currentPos.current.x) {
+            if (e.pageX < currentPos.current.x) {
                 setDirection('left');
             } else {
                 setDirection('right');
@@ -42,38 +47,44 @@ export default function RobotCursor() {
             // Distance check for "Excited" state (Heart)
             // If robot is very close to cursor (e.g. 50px)
             const absDist = Math.sqrt(dx * dx + dy * dy);
-            // Use a ref or state for visual update. State causes re-render, optimize?
-            // React state is fine for this frequency (toggle only)
+
             if (absDist < 40) { // 40px proximity
                 setIsExcited(true);
             } else {
                 setIsExcited(false);
             }
 
-            // Manhattan logic: Choose axis
-            let moveX = 0;
-            let moveY = 0;
-
-            if (Math.abs(dx) > Math.abs(dy)) {
-                moveX = dx;
-            } else {
-                moveY = dy;
+            // Stateful Axis Locking
+            // 1. Check if we are done with current axis
+            if (movingAxis.current === 'x') {
+                if (Math.abs(dx) < speed) movingAxis.current = null;
+            } else if (movingAxis.current === 'y') {
+                if (Math.abs(dy) < speed) movingAxis.current = null;
             }
 
-            // Normalize and move by fixed speed if far enough
-            const dist = Math.sqrt(moveX * moveX + moveY * moveY);
+            // 2. Pick new axis if needed
+            if (!movingAxis.current) {
+                // Determine dominant distance
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    movingAxis.current = 'x';
+                } else if (Math.abs(dy) > 0) { // Only pick y if there is actual movement needed
+                    movingAxis.current = 'y';
+                }
+            }
 
-            if (dist > speed) {
-                if (moveX !== 0) {
-                    currentPos.current.x += (moveX / Math.abs(moveX)) * speed;
+            // 3. Move along current axis
+            if (movingAxis.current === 'x') {
+                if (Math.abs(dx) > speed) {
+                    currentPos.current.x += (dx / Math.abs(dx)) * speed;
+                } else {
+                    currentPos.current.x += dx; // Snap
                 }
-                if (moveY !== 0) {
-                    currentPos.current.y += (moveY / Math.abs(moveY)) * speed;
+            } else if (movingAxis.current === 'y') {
+                if (Math.abs(dy) > speed) {
+                    currentPos.current.y += (dy / Math.abs(dy)) * speed;
+                } else {
+                    currentPos.current.y += dy; // Snap
                 }
-            } else {
-                // Snap if close
-                if (moveX !== 0) currentPos.current.x += moveX;
-                if (moveY !== 0) currentPos.current.y += moveY;
             }
 
             if (cursorRef.current) {
@@ -93,7 +104,7 @@ export default function RobotCursor() {
 
     if (!mounted) return null;
 
-    // Use Portal to attach directly to body, avoiding parent transform/scroll issues
+    // Use Portal to attach directly to body
     return createPortal(
         <>
             <div className="robot-container" ref={cursorRef}>
@@ -113,7 +124,7 @@ export default function RobotCursor() {
             </div>
             <style jsx>{`
         .robot-container {
-          position: fixed;
+          position: absolute;
           top: -20px;
           left: -20px;
           pointer-events: none;
