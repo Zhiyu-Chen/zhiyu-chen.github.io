@@ -36,7 +36,8 @@ export default function RobotCursor() {
 
         const animate = () => {
             // Smooth lerp (Linear Interpolation)
-            const ease = 0.15; // Speed of the following
+            // Slower speed "like an ant" (0.02)
+            const ease = 0.02;
 
             const dx = targetPos.current.x - currentPos.current.x;
             const dy = targetPos.current.y - currentPos.current.y;
