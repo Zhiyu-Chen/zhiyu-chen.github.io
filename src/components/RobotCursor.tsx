@@ -35,18 +35,36 @@ export default function RobotCursor() {
         let animationFrameId: number;
 
         const animate = () => {
-            // Smooth lerp (Linear Interpolation)
-            // Slower speed "like an ant" (0.02)
-            const ease = 0.02;
+            // Constant speed: ~1cm/sec -> ~38px/sec -> ~0.6px/frame (at 60fps)
+            const speed = 0.8;
 
             const dx = targetPos.current.x - currentPos.current.x;
             const dy = targetPos.current.y - currentPos.current.y;
 
-            // Manhattan movement: Only move along the dominant axis
+            // Manhattan logic: Choose axis
+            let moveX = 0;
+            let moveY = 0;
+
             if (Math.abs(dx) > Math.abs(dy)) {
-                currentPos.current.x += dx * ease;
+                moveX = dx;
             } else {
-                currentPos.current.y += dy * ease;
+                moveY = dy;
+            }
+
+            // Normalize and move by fixed speed
+            const dist = Math.sqrt(moveX * moveX + moveY * moveY);
+
+            if (dist > speed) {
+                if (moveX !== 0) {
+                    currentPos.current.x += (moveX / Math.abs(moveX)) * speed;
+                }
+                if (moveY !== 0) {
+                    currentPos.current.y += (moveY / Math.abs(moveY)) * speed;
+                }
+            } else {
+                // Snap if close enough
+                if (moveX !== 0) currentPos.current.x += moveX;
+                if (moveY !== 0) currentPos.current.y += moveY;
             }
 
             if (cursorRef.current) {

@@ -12,7 +12,7 @@ export default function Layout({ children, home }: LayoutProps) {
     return (
         <div className={styles.container}>
             <Head>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
                 <meta
                     name="description"
                     content="Zhiyu Chen's personal website and blog"

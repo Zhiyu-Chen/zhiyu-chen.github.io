@@ -8,13 +8,19 @@
     height: var(--nav-height);
     display: flex;
     align-items: center;
-    position: sticky;
+    position: fixed;
+    /* Fixed to viewport */
     top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.8);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    /* Slightly more opaque */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Slight shadow for separation */
 }
 
 .nav {
@@ -57,11 +63,13 @@
     color: var(--foreground);
 }
 
+/* Add padding to main to prevent content hiding behind fixed header */
 .main {
     flex: 1;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: calc(var(--nav-height) + 2rem) auto 0;
+    /* Add top margin */
     padding: 0 1.5rem;
 }
 
