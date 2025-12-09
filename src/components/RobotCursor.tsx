@@ -42,8 +42,12 @@ export default function RobotCursor() {
             const dx = targetPos.current.x - currentPos.current.x;
             const dy = targetPos.current.y - currentPos.current.y;
 
-            currentPos.current.x += dx * ease;
-            currentPos.current.y += dy * ease;
+            // Manhattan movement: Only move along the dominant axis
+            if (Math.abs(dx) > Math.abs(dy)) {
+                currentPos.current.x += dx * ease;
+            } else {
+                currentPos.current.y += dy * ease;
+            }
 
             if (cursorRef.current) {
                 cursorRef.current.style.transform = `translate(${currentPos.current.x}px, ${currentPos.current.y}px)`;
