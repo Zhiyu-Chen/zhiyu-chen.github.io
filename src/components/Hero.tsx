@@ -13,11 +13,12 @@ export default function Hero() {
                     I received my PhD from Lehigh University in 2022.
                     My research interests include data mining, machine learning, natural language processing and information retrieval.
                 </p>
-                <div className={styles.actions}>
-                    <a href="mailto:zhiyuchen@example.com" className={styles.button}>Contact Me</a>
-                    <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className={styles.buttonOutline}>Google Scholar</a>
-                </div>
-            </div>
+                <div className={styles.socials}>
+                    <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Google Scholar</a>
+                    <a href="https://www.linkedin.com/in/zhiyu-chen-ir-nlp/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>LinkedIn</a>
+                    <a href="https://github.com/Startcode" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>GitHub</a>
+                    <a href="https://www.instagram.com/colozoy/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Instagram</a>
+                </div>            </div>
             <div className={styles.imageWrapper}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

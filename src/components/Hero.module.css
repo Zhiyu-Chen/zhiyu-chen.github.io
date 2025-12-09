@@ -31,39 +31,36 @@
     margin-bottom: 2rem;
 }
 
-.actions {
+.socials {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.button,
-.buttonOutline {
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
+.socialLink {
     font-weight: 600;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.button {
-    background: var(--foreground);
-    color: var(--background);
-    border: 1px solid var(--foreground);
-}
-
-.button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-.buttonOutline {
-    background: transparent;
     color: var(--foreground);
-    border: 1px solid var(--card-border);
+    position: relative;
+    padding-bottom: 2px;
 }
 
-.buttonOutline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--foreground);
+.socialLink::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.socialLink:hover::after {
+    width: 100%;
+}
+
+.socialLink:hover {
+    color: var(--accent);
 }
 
 .imageWrapper {
