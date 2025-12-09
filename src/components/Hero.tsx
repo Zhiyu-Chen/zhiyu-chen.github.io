@@ -19,10 +19,9 @@ export default function Hero() {
                 </div>
             </div>
             <div className={styles.imageWrapper}>
-                {/* Hotlinking as requested */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src="https://zhiyusite.files.wordpress.com/2017/04/profile.jpeg"
+                    src="/images/profile.jpg"
                     alt="Zhiyu Chen"
                     className={styles.profileImage}
                 />
