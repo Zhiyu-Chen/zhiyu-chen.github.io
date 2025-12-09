@@ -47,18 +47,26 @@ export default function Services() {
             color: var(--accent);
             margin-bottom: 0.5rem;
         }
-        ul {
-          list-style: disc;
-          padding-left: 1.5rem;
-          color: #bdbdbd;
-        }
         .pc-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            list-style: none;
+            padding: 0;
         }
-        li {
-          margin-bottom: 0.3rem;
+        .pc-list li {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #bdbdbd;
+            transition: background 0.2s;
+        }
+        .pc-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            border-color: var(--accent);
         }
       `}</style>
     </Section>
