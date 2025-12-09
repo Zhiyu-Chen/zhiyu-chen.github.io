@@ -25,7 +25,12 @@ export default function Layout({ children, home }: LayoutProps) {
                 <nav className={styles.nav}>
                     <Link href="/" className={styles.logo}>Zhiyu Chen</Link>
                     <div className={styles.links}>
-                        {/* Single page, no other links needed for now */}
+                        <Link href="#about">About</Link>
+                        <Link href="#education">Education</Link>
+                        <Link href="#experience">Experience</Link>
+                        <Link href="#publications">Publications</Link>
+                        <Link href="#services">Services</Link>
+                        <Link href="#awards">Awards</Link>
                     </div>
                 </nav>
             </header>
