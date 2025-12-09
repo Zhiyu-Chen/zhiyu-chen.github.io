@@ -5,14 +5,14 @@ export default function Services() {
     <Section title="Services" id="services">
       <div className="service-group">
         <h3>Area Chair</h3>
-        <ul>
+        <ul className="pc-list">
           <li>ACL ARR 2023, 2025</li>
         </ul>
       </div>
 
       <div className="service-group">
         <h3>Organizer</h3>
-        <ul>
+        <ul className="pc-list">
           <li>
             <a href="https://multiconer.github.io/organizers" target="_blank" rel="noopener noreferrer">
               SemEval-2023: Task 2 (co-located with ACL-2023)

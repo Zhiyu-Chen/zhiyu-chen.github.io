@@ -12,6 +12,19 @@ export default function About() {
             </p>
 
             <div className={styles.socials} style={{ justifyContent: 'flex-start' }}>
+                <a
+                    href="mailto:zhiyuchen.ai@gmail.com"
+                    className={styles.socialLink}
+                    aria-label="Email"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText("zhiyuchen.ai@gmail.com");
+                        alert("Email copied to clipboard: zhiyuchen.ai@gmail.com\nHappy to connect!");
+                        window.location.href = "mailto:zhiyuchen.ai@gmail.com";
+                    }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                </a>
                 <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Google Scholar">
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l9 4.5-9 4.5-9-4.5z"></path><path d="M12 10v9"></path><path d="M5 6.5V17c0 1.5 1.5 3 3.5 3s3.5-1.5 3.5-3v-6"></path><path d="M22 6.5v4.5"></path></svg>
                 </a>

@@ -17,16 +17,35 @@
     margin-bottom: 1.5rem;
     letter-spacing: -0.05rem;
     color: #111;
-    /* Solid dark color */
 }
 
-/* Replaced highlight with a solid elegant color, or just rely on title color. 
-   If we want a slight distinction for the name, we can use a slightly lighter grey or a subtle blue,
-   but user asked to remove "ugly" color. Let's make it inherit or solid black/dark grey. */
+/* Typewriter Styles */
 .highlight {
-    color: #000;
-    background: none;
-    -webkit-text-fill-color: initial;
+    background: linear-gradient(to right, #007CF0, #00DFD8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Static cool gradient: Royal Blue to Cyan */
+}
+
+.cursor {
+    display: inline-block;
+    color: #111;
+    font-weight: 400;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .bio {

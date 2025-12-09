@@ -28,6 +28,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-main);
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 20px);
 }
 
 a {

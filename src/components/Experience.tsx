@@ -8,7 +8,7 @@ export default function Experience() {
         <p className="company">Amazon, Seattle, WA, US (remote)</p>
         <p className="duration">05/2021 - 09/2021</p>
         <ul className="responsibilities">
-          <li>Proposed a reinforcement learning method for conversational question answering, accepted by EMNLP Industry Track 2022.</li>
+          <li>Proposed a reinforcement learning method for conversational question answering, accepted by <a href="https://www.amazon.science/publications/reinforced-question-rewriting-for-conversational-question-answering" target="_blank" rel="noopener noreferrer">EMNLP Industry Track 2022</a>.</li>
           <li>Mentors/Managers: Jie Zhao, Anjie Fang, Besnik Fetahu, Oleg Rokhlenko, Shervin Malmasi</li>
         </ul>
       </div>
@@ -17,7 +17,7 @@ export default function Experience() {
         <p className="company">Zhuiyi Technology, Shenzhen, Guangdong, China</p>
         <p className="duration">05/2019 - 09/2019</p>
         <ul className="responsibilities">
-          <li>Led a team solving SuperGLUE benchmark tasks, achieving a 2nd-place ranking in our submission, covered in China Daily (中国日报).</li>
+          <li>Led a team solving <a href="https://super.gluebenchmark.com/leaderboard/" target="_blank" rel="noopener noreferrer">SuperGLUE benchmark tasks</a>, achieving a 2nd-place ranking in our submission, covered in <a href="https://tech.chinadaily.com.cn/a/202001/17/WS5e211ef9a3107bb6b579a768.html" target="_blank" rel="noopener noreferrer">China Daily (中国日报)</a>.</li>
           <li>Manager: Yinan Xu</li>
         </ul>
       </div>
@@ -63,6 +63,13 @@ export default function Experience() {
         }
         .responsibilities li {
             margin-bottom: 0.4rem;
+        }
+        .responsibilities a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .responsibilities a:hover {
+            text-decoration: underline;
         }
       `}</style>
     </Section>
