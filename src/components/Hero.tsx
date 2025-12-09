@@ -6,11 +6,12 @@ export default function Hero() {
         <section className={styles.hero}>
             <div className={styles.content}>
                 <h1 className={styles.title}>
-                    Hi, I'm <span className={styles.highlight}>Zhiyu Chen</span>.
+                    Hi, I'm <span className={styles.highlight}>Zhiyu Chen (陈知雨)</span>.
                 </h1>
                 <p className={styles.bio}>
-                    I'm a student interested in Information Retrieval, Natural Language Processing, and Graph Neural Networks.
-                    I am passionate about how to derive insights or knowledge from unstructured text or data.
+                    I am an Applied Scientist at Amazon in Seattle, US.
+                    I received my PhD from Lehigh University in 2022.
+                    My research interests include data mining, machine learning, natural language processing and information retrieval.
                 </p>
                 <div className={styles.actions}>
                     <a href="mailto:zhiyuchen@example.com" className={styles.button}>Contact Me</a>
