@@ -1,31 +1,28 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import Introduction from '../components/Introduction';
-import BlogList from '../components/BlogList';
-import { getSortedPostsData, PostData } from '../lib/posts';
-import { GetStaticProps } from 'next';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Education from '../components/Education';
+import Experience from '../components/Experience';
+import Publications from '../components/Publications';
+import Services from '../components/Services';
+import Awards from '../components/Awards';
+import Hobbies from '../components/Hobbies';
 
-interface HomeProps {
-  allPostsData: PostData[];
-}
-
-export default function Home({ allPostsData }: HomeProps) {
+export default function Home() {
   return (
     <Layout home>
       <Head>
         <title>Zhiyu Chen</title>
       </Head>
-      <Introduction />
-      <BlogList posts={allPostsData} />
+      <Hero />
+      <About />
+      <Education />
+      <Experience />
+      <Publications />
+      <Services />
+      <Awards />
+      <Hobbies />
     </Layout>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-};

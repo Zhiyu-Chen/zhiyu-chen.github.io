@@ -25,8 +25,7 @@ export default function Layout({ children, home }: LayoutProps) {
                 <nav className={styles.nav}>
                     <Link href="/" className={styles.logo}>Zhiyu Chen</Link>
                     <div className={styles.links}>
-                        <Link href="/">Home</Link>
-                        {/* Add more links if needed like About, etc. */}
+                        {/* Single page, no other links needed for now */}
                     </div>
                 </nav>
             </header>
@@ -36,8 +35,10 @@ export default function Layout({ children, home }: LayoutProps) {
             <footer className={styles.footer}>
                 <p>© {new Date().getFullYear()} Zhiyu Chen. All rights reserved.</p>
                 <div className={styles.socials}>
+                    <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+                    <a href="https://www.linkedin.com/in/zhiyu-chen-ir-nlp/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/colozoy/" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="https://github.com/Startcode" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    {/* Add LinkedIn etc */}
                 </div>
             </footer>
         </div>

@@ -1,0 +1,99 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    margin: 4rem 0 6rem;
+}
+
+.content {
+    flex: 1;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.05rem;
+}
+
+.highlight {
+    background: linear-gradient(120deg, var(--accent), #ff0080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bio {
+    font-size: 1.25rem;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.button,
+.buttonOutline {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button {
+    background: var(--foreground);
+    color: var(--background);
+    border: 1px solid var(--foreground);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.buttonOutline {
+    background: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--card-border);
+}
+
+.buttonOutline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--foreground);
+}
+
+.imageWrapper {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--card-border);
+    transition: border-color 0.3s ease;
+}
+
+.profileImage:hover {
+    border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+}
