@@ -1,28 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function RobotCursor() {
     const cursorRef = useRef<HTMLDivElement>(null);
-    // Target position (mouse)
     const targetPos = useRef({ x: 0, y: 0 });
-    // Current position (robot)
     const currentPos = useRef({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
-    const [direction, setDirection] = useState('right'); // 'left' or 'right'
+    const [isExcited, setIsExcited] = useState(false);
+    const [direction, setDirection] = useState('right');
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+        // Initialize position off-screen or center
+        if (typeof window !== 'undefined') {
+            targetPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            currentPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        }
+
         const handleMouseMove = (e: MouseEvent) => {
             targetPos.current = { x: e.clientX, y: e.clientY };
-
-            // Check if hovering over clickable elements
-            const target = e.target as HTMLElement;
-            setIsHovering(
-                target.tagName === 'A' ||
-                target.tagName === 'BUTTON' ||
-                target.closest('a') !== null ||
-                target.closest('button') !== null
-            );
-
-            // Determine direction
+            // Direction update immediately on mouse move for responsiveness
             if (e.clientX < currentPos.current.x) {
                 setDirection('left');
             } else {
@@ -35,11 +32,23 @@ export default function RobotCursor() {
         let animationFrameId: number;
 
         const animate = () => {
-            // Constant speed: ~1cm/sec -> ~38px/sec -> ~0.6px/frame (at 60fps)
-            const speed = 0.8;
+            // Speed: ~2cm/sec -> ~76px/sec -> ~1.2px/frame @ 60fps
+            // User asked to double the previous speed (0.8)
+            const speed = 1.6;
 
             const dx = targetPos.current.x - currentPos.current.x;
             const dy = targetPos.current.y - currentPos.current.y;
+
+            // Distance check for "Excited" state (Heart)
+            // If robot is very close to cursor (e.g. 50px)
+            const absDist = Math.sqrt(dx * dx + dy * dy);
+            // Use a ref or state for visual update. State causes re-render, optimize?
+            // React state is fine for this frequency (toggle only)
+            if (absDist < 40) { // 40px proximity
+                setIsExcited(true);
+            } else {
+                setIsExcited(false);
+            }
 
             // Manhattan logic: Choose axis
             let moveX = 0;
@@ -51,7 +60,7 @@ export default function RobotCursor() {
                 moveY = dy;
             }
 
-            // Normalize and move by fixed speed
+            // Normalize and move by fixed speed if far enough
             const dist = Math.sqrt(moveX * moveX + moveY * moveY);
 
             if (dist > speed) {
@@ -62,13 +71,13 @@ export default function RobotCursor() {
                     currentPos.current.y += (moveY / Math.abs(moveY)) * speed;
                 }
             } else {
-                // Snap if close enough
+                // Snap if close
                 if (moveX !== 0) currentPos.current.x += moveX;
                 if (moveY !== 0) currentPos.current.y += moveY;
             }
 
             if (cursorRef.current) {
-                cursorRef.current.style.transform = `translate(${currentPos.current.x}px, ${currentPos.current.y}px)`;
+                cursorRef.current.style.transform = `translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0)`;
             }
 
             animationFrameId = requestAnimationFrame(animate);
@@ -82,10 +91,13 @@ export default function RobotCursor() {
         };
     }, []);
 
-    return (
+    if (!mounted) return null;
+
+    // Use Portal to attach directly to body, avoiding parent transform/scroll issues
+    return createPortal(
         <>
             <div className="robot-container" ref={cursorRef}>
-                <div className={`robot ${isHovering ? 'excited' : ''} ${direction}`}>
+                <div className={`robot ${isExcited ? 'excited' : ''} ${direction}`}>
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C13.1046 2 14 2.89543 14 4V5H10V4C10 2.89543 10.8954 2 12 2Z" fill="#333" />
                         <rect x="5" y="5" width="14" height="10" rx="3" fill="#ffffff" stroke="#333" strokeWidth="1.5" />
@@ -95,15 +107,14 @@ export default function RobotCursor() {
                         <path d="M4 8L2 7" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
                         <path d="M20 8L22 7" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
                         <path d="M7 15V19C7 20.1046 7.89543 21 9 21H15C16.1046 21 17 20.1046 17 19V15" fill="#fff" stroke="#333" strokeWidth="1.5" />
-                        {/* Heart for excitement */}
-                        {isHovering && <path d="M12 6.5C12 6.5 11 5.5 10 6.5C9 7.5 10.5 9 12 10C13.5 9 15 7.5 14 6.5C13 5.5 12 6.5 12 6.5Z" fill="#ff4d4d" className="heart" />}
+                        {isExcited && <path d="M12 6.5C12 6.5 11 5.5 10 6.5C9 7.5 10.5 9 12 10C13.5 9 15 7.5 14 6.5C13 5.5 12 6.5 12 6.5Z" fill="#ff4d4d" className="heart" />}
                     </svg>
                 </div>
             </div>
             <style jsx>{`
         .robot-container {
           position: fixed;
-          top: -20px; /* Offset to center relative to mouse or sit above it */
+          top: -20px;
           left: -20px;
           pointer-events: none;
           z-index: 9999;
@@ -128,14 +139,13 @@ export default function RobotCursor() {
             from { transform: scale(1); }
             to { transform: scale(1.3); transform-origin: center; }
         }
-        
-        /* Hide on mobile */
         @media (max-width: 768px) {
             .robot-container {
                 display: none;
             }
         }
       `}</style>
-        </>
+        </>,
+        document.body
     );
 }
