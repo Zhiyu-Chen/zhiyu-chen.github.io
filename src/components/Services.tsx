@@ -13,7 +13,11 @@ export default function Services() {
       <div className="service-group">
         <h3>Organizer</h3>
         <ul>
-          <li>SemEval-2023: Task 2 (co-located with ACL-2023)</li>
+          <li>
+            <a href="https://multiconer.github.io/organizers" target="_blank" rel="noopener noreferrer">
+              SemEval-2023: Task 2 (co-located with ACL-2023)
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -44,7 +48,7 @@ export default function Services() {
         }
         h3 {
             font-size: 1.1rem;
-            color: var(--accent);
+            color: #444;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
@@ -52,6 +56,13 @@ export default function Services() {
           list-style: disc;
           padding-left: 1.5rem;
           color: #444;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         .pc-list {
             display: flex;

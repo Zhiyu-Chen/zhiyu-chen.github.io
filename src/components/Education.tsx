@@ -38,7 +38,7 @@ export default function Education() {
           color: var(--foreground);
         }
         .school {
-          color: var(--accent);
+          color: #444;
           margin-bottom: 0.4rem;
           font-weight: 500;
         }

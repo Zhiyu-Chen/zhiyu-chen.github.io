@@ -45,7 +45,7 @@ export default function Experience() {
           color: var(--foreground);
         }
         .company {
-          color: var(--accent);
+          color: #444;
           margin: 0.25rem 0;
           font-weight: 600;
         }
