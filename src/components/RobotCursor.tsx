@@ -5,6 +5,7 @@ export default function RobotCursor() {
     const cursorRef = useRef<HTMLDivElement>(null);
     const targetPos = useRef({ x: 0, y: 0 });
     const currentPos = useRef({ x: 0, y: 0 });
+    const lastClientPos = useRef({ x: 0, y: 0 }); // Track viewport coordinates
     const movingAxis = useRef<'x' | 'y' | null>(null); // Use ref for mutable state
     const [isExcited, setIsExcited] = useState(false);
     const [direction, setDirection] = useState('right');
@@ -14,14 +15,21 @@ export default function RobotCursor() {
         setMounted(true);
         // Initialize position off-screen or center + scroll
         if (typeof window !== 'undefined') {
-            const startX = (window.innerWidth / 2) + window.scrollX;
-            const startY = (window.innerHeight / 2) + window.scrollY;
+            const viewportX = window.innerWidth / 2;
+            const viewportY = window.innerHeight / 2;
+            const startX = viewportX + window.scrollX;
+            const startY = viewportY + window.scrollY;
+
             targetPos.current = { x: startX, y: startY };
             currentPos.current = { x: startX, y: startY };
+            lastClientPos.current = { x: viewportX, y: viewportY };
         }
 
         const handleMouseMove = (e: MouseEvent) => {
-            // Use page coordinates for absolute positioning
+            // Track viewport coordinates instead of absolute page coordinates
+            lastClientPos.current = { x: e.clientX, y: e.clientY };
+
+            // Initial target update (will be overridden by animate loop but good for immediate feedback)
             targetPos.current = { x: e.pageX, y: e.pageY };
 
             // Direction update immediately on mouse move for responsiveness
@@ -37,16 +45,28 @@ export default function RobotCursor() {
         let animationFrameId: number;
 
         const animate = () => {
-            // Speed: ~2cm/sec -> ~76px/sec -> ~1.2px/frame @ 60fps
-            // User asked to double the previous speed (0.8)
-            const speed = 1.6;
+            // Update target position based on current scroll + last known mouse position
+            if (typeof window !== 'undefined') {
+                targetPos.current = {
+                    x: lastClientPos.current.x + window.scrollX,
+                    y: lastClientPos.current.y + window.scrollY
+                };
+            }
 
             const dx = targetPos.current.x - currentPos.current.x;
             const dy = targetPos.current.y - currentPos.current.y;
+            const absDist = Math.sqrt(dx * dx + dy * dy);
+
+            // Speed: ~2cm/sec -> ~76px/sec -> ~1.2px/frame @ 60fps
+            // Dynamic speed: faster if far away
+            const baseSpeed = 1.6;
+            const threshold = 750;
+            // Increase speed by 0.05 (tuned) for every pixel beyond threshold
+            const extraSpeed = Math.max(0, (absDist - threshold) * 0.05);
+            const speed = baseSpeed + extraSpeed;
 
             // Distance check for "Excited" state (Heart)
             // If robot is very close to cursor (e.g. 50px)
-            const absDist = Math.sqrt(dx * dx + dy * dy);
 
             if (absDist < 40) { // 40px proximity
                 setIsExcited(true);
