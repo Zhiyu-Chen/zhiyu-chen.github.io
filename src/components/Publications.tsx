@@ -5,6 +5,34 @@ export default function Publications() {
     <Section title="Publications" id="publications">
       <ul className="pub-list">
         <li>
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457325004005" target="_blank" rel="noopener noreferrer" className="title-link">
+            <span className="title"> Efficient Low-Rank Index Routing for High-Dimensional Approximate Nearest Neighbor Search.</span>
+          </a>
+          <div className="authors">Y. Li, S. Wang, <strong>Z. Chen</strong>, Z. Peng.</div>
+          <span className="venue"> Information Processing & Management, 2026</span>
+        </li>
+        <li>
+          <a href="https://link.springer.com/article/10.1007/s11280-025-01374-8" target="_blank" rel="noopener noreferrer" className="title-link">
+            <span className="title"> Dependency Relationships-Enhanced Attentive Group Recommendation in HINs.</span>
+          </a>
+          <div className="authors">J. Zhang, <strong>Z. Chen</strong>, S. Wang, X. Yang, D. Han, Z. Peng.</div>
+          <span className="venue"> World Wide Web Journal, 2025</span>
+        </li>
+        <li>
+          <a href="https://aclanthology.org/2025.emnlp-industry.72.pdf" target="_blank" rel="noopener noreferrer" className="title-link">
+            <span className="title"> LLM-based Dialogue Labeling for Multiturn Adaptive RAG.</span>
+          </a>
+          <div className="authors"><strong>Z. Chen</strong>, B. Xie, S. Srinivasan, M. Ramanathan, R. Maragoud, Q. Liu.</div>
+          <span className="venue"> EMNLP 2025 (Industry)</span>
+        </li>
+        <li>
+          <a href="https://arxiv.org/pdf/2506.00210" target="_blank" rel="noopener noreferrer" className="title-link">
+            <span className="title"> REIC: RAG-Enhanced Intent Classification at Scale.</span>
+          </a>
+          <div className="authors">Z. Zhang, M. Yang, <strong>Z. Chen</strong>, Y. Zhuang, S.-T. Pi, Q. Liu, R. Maragoud, V. Nguyen, A. Beniwal.</div>
+          <span className="venue"> EMNLP 2025 (Industry)</span>
+        </li>
+        <li>
           <a href="https://aclanthology.org/2025.acl-long.641/" target="_blank" rel="noopener noreferrer" className="title-link">
             <span className="title"> Wizard of Shopping: Target-Oriented E-commerce Dialogue Generation with Decision Tree Branching.</span>
           </a>
