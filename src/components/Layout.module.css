@@ -1,7 +1,8 @@
 .shell {
     display: grid;
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-    max-width: 1180px;
+    grid-template-columns: clamp(248px, 22vw, 344px) minmax(0, 1fr);
+    width: 100%;
+    max-width: 1680px;
     margin: 0 auto;
     min-height: 100vh;
 }
@@ -12,7 +13,7 @@
     top: 0;
     align-self: start;
     height: 100vh;
-    padding: 3rem 2rem;
+    padding: clamp(2rem, 3.5vw, 3.25rem) clamp(1.25rem, 1.8vw, 2.25rem);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -141,13 +142,17 @@
 }
 
 .main {
-    max-width: var(--content-max);
-    padding: 3.5rem 3rem 2rem;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 4vw, 4rem) 2rem;
 }
 
 .footer {
-    max-width: var(--content-max);
-    padding: 2rem 3rem 3rem;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2rem clamp(1.5rem, 4vw, 4rem) 3rem;
 }
 
 .footer p {
