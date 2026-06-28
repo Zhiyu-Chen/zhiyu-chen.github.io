@@ -27,18 +27,18 @@
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: clamp(116px, 8.5vw, 150px);
+    height: clamp(116px, 8.5vw, 150px);
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-md);
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.25rem;
 }
 
 .name {
     font-family: var(--font-serif);
-    font-size: 1.85rem;
+    font-size: 2.1rem;
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -47,21 +47,21 @@
 
 .nameCn {
     font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     color: var(--text-muted);
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
 }
 
 .role {
-    margin-top: 0.9rem;
-    font-size: 1rem;
+    margin-top: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--text);
 }
 
 .org {
-    margin-top: 0.2rem;
-    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
     color: var(--text-faint);
     display: flex;
     align-items: center;
