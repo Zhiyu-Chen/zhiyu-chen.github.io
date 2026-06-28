@@ -75,8 +75,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: clamp(16px, 14.6px + 0.34vw, 18.5px);
-  line-height: 1.65;
+  font-size: clamp(17px, 15.5px + 0.32vw, 19px);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;

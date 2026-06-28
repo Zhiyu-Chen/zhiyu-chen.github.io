@@ -47,21 +47,21 @@
 
 .nameCn {
     font-family: var(--font-serif);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
     margin-top: 0.15rem;
 }
 
 .role {
     margin-top: 0.9rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text);
 }
 
 .org {
     margin-top: 0.2rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-faint);
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
     align-items: center;
     gap: 0.65rem;
     padding: 0.34rem 0;
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     font-weight: 500;
     color: var(--text-faint);
     transition: color 0.18s ease;
@@ -157,7 +157,7 @@
 
 .footer p {
     color: var(--text-faint);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 /* ---------- Responsive ---------- */

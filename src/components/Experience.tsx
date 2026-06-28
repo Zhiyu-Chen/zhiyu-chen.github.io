@@ -96,19 +96,19 @@ export default function Experience() {
           justify-content: center;
         }
         h3 {
-          font-size: 1.02rem;
+          font-size: 1.06rem;
           font-weight: 600;
           color: var(--text);
         }
         .company {
           margin-top: 0.1rem;
-          font-size: 0.92rem;
+          font-size: 0.98rem;
           font-weight: 500;
           color: var(--text-muted);
         }
         .duration {
           margin-top: 0.1rem;
-          font-size: 0.83rem;
+          font-size: 0.9rem;
           color: var(--text-faint);
         }
         .bullets {
@@ -117,7 +117,7 @@ export default function Experience() {
           display: flex;
           flex-direction: column;
           gap: 0.4rem;
-          font-size: 0.92rem;
+          font-size: 0.98rem;
           line-height: 1.6;
           color: var(--text-muted);
         }

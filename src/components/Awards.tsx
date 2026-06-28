@@ -41,7 +41,7 @@ export default function Awards() {
           grid-template-columns: 1.4rem 3.4rem 1fr;
           align-items: baseline;
           gap: 0.5rem;
-          font-size: 0.94rem;
+          font-size: 0.98rem;
           line-height: 1.5;
         }
         .marker {
@@ -51,7 +51,7 @@ export default function Awards() {
           color: var(--text-faint);
           font-variant-numeric: tabular-nums;
           font-weight: 500;
-          font-size: 0.85rem;
+          font-size: 0.9rem;
         }
         .text {
           color: var(--text-muted);

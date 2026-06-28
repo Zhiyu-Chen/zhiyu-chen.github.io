@@ -40,7 +40,7 @@ export default function Services() {
           margin-bottom: 0.6rem;
         }
         .line {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: var(--text-muted);
         }
         .tags {
@@ -55,7 +55,7 @@ export default function Services() {
           border: 1px solid var(--border);
           padding: 0.35rem 0.7rem;
           border-radius: 999px;
-          font-size: 0.83rem;
+          font-size: 0.9rem;
           color: var(--text-muted);
           transition: border-color 0.18s ease, color 0.18s ease;
         }

@@ -75,18 +75,18 @@ export default function Education() {
           justify-content: center;
         }
         h3 {
-          font-size: 1.02rem;
+          font-size: 1.06rem;
           font-weight: 600;
           color: var(--text);
         }
         .school {
           margin-top: 0.15rem;
-          font-size: 0.92rem;
+          font-size: 0.98rem;
           color: var(--text-muted);
         }
         .details {
           margin-top: 0.15rem;
-          font-size: 0.85rem;
+          font-size: 0.92rem;
           color: var(--text-faint);
         }
       `}</style>

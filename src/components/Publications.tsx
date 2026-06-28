@@ -58,7 +58,7 @@ export default function Publications() {
         }
         .year-label {
           font-family: var(--font-serif);
-          font-size: 1rem;
+          font-size: 1.05rem;
           font-weight: 600;
           color: var(--text-faint);
           padding-top: 0.15rem;
@@ -74,14 +74,14 @@ export default function Publications() {
           gap: 1rem;
         }
         .pub-title {
-          font-size: 1.02rem;
+          font-size: 1.06rem;
           font-weight: 600;
           line-height: 1.4;
           color: var(--text);
         }
         .pub-authors {
           margin-top: 0.3rem;
-          font-size: 0.9rem;
+          font-size: 0.97rem;
           color: var(--text-muted);
           line-height: 1.5;
         }
@@ -99,11 +99,11 @@ export default function Publications() {
         .venue {
           font-family: var(--font-serif);
           font-style: italic;
-          font-size: 0.9rem;
+          font-size: 0.97rem;
           color: var(--text-faint);
         }
         .pdf {
-          font-size: 0.85rem;
+          font-size: 0.92rem;
           font-weight: 600;
           color: var(--accent);
         }

@@ -39,13 +39,13 @@ export default function Hobbies() {
         .icon { font-size: 1.5rem; }
         h3 {
           margin-top: 0.5rem;
-          font-size: 1rem;
+          font-size: 1.05rem;
           font-weight: 600;
           color: var(--text);
         }
         p {
           margin-top: 0.25rem;
-          font-size: 0.88rem;
+          font-size: 0.95rem;
           color: var(--text-faint);
           line-height: 1.5;
         }
