@@ -1,39 +1,54 @@
 import Section from './Section';
 
+const awards: { year: string; text: string }[] = [
+  { year: '2021', text: 'ACM SIGIR Student Travel Grant' },
+  { year: '2021', text: 'Rossin Professional Development Program Award, Lehigh University' },
+  { year: '2020', text: 'ISWC Student Grant' },
+  { year: '2020', text: 'ACM SIGIR Student Travel Grant' },
+  { year: '2018', text: 'Best Paper Award — Intl. Workshop on Profiles & Data:Search ’18' },
+  { year: '2018', text: 'ACM SIGIR Student Travel Grant' },
+  { year: '2015', text: 'RCEAS Dean’s Fellowship' },
+  { year: '2014', text: 'Chinese Government Scholarship, China Scholarship Council' },
+  { year: '2013', text: 'First Prize, National Mathematical Contest in Modeling (Jiangsu)' },
+  { year: '2012', text: 'Honorable Mention for Social Practice' },
+  { year: '2012', text: '2nd Prize, 11th Higher Mathematics Competition of Jiangsu Province' },
+  { year: '2011–14', text: 'Student Scholarship' },
+  { year: '2011–14', text: 'Merit Student' },
+];
+
 export default function Awards() {
   return (
-    <Section title="Honors and Awards" id="awards">
-      <ul className="award-list">
-        <li>2021, ACM SIGIR Student Travel Grant</li>
-        <li>2021, Rossin Professional Development Program Award at Lehigh University</li>
-        <li>2020, ISWC Student Grant</li>
-        <li>2020, ACM SIGIR Student Travel Grant</li>
-        <li>2018, Best Paper Award of International Workshop on Profiles&Data:Search’18</li>
-        <li>2018, ACM SIGIR Student Travel Grant</li>
-        <li>2015, RCEAS Dean’s Fellowship</li>
-        <li>2014, Chinese Government Scholarship from China Scholarship Council</li>
-        <li>2013, First Prize, National Mathematical Contest in Modeling (Jiangsu Division)</li>
-        <li>2012, Honorable Mention for Social Practice</li>
-        <li>2012, Second Prize, 11-th Higher Mathematics Competition of Jiangsu Province</li>
-        <li>2011-2014, Student Scholarship</li>
-        <li>2011-2014, Merit Student</li>
+    <Section title="Honors & Awards" id="awards">
+      <ul className="awards">
+        {awards.map((a, i) => (
+          <li key={i}>
+            <span className="year">{a.year}</span>
+            <span className="text">{a.text}</span>
+          </li>
+        ))}
       </ul>
       <style jsx>{`
-        .award-list {
+        .awards {
           list-style: none;
-          padding-left: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
         }
         li {
-          margin-bottom: 0.8rem;
-          color: #555;
-          display: flex;
-          align-items: baseline;
+          display: grid;
+          grid-template-columns: 70px 1fr;
+          gap: 1rem;
+          padding: 0.6rem 0;
+          border-bottom: 1px solid var(--border);
+          font-size: 0.93rem;
         }
-        li::before {
-            content: "🏆";
-            margin-right: 0.8rem;
-            font-size: 0.8rem;
+        li:last-child { border-bottom: none; }
+        .year {
+          color: var(--text-faint);
+          font-variant-numeric: tabular-nums;
+          font-weight: 500;
         }
+        .text { color: var(--text-muted); }
       `}</style>
     </Section>
   );

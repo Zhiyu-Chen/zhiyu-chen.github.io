@@ -1,91 +1,67 @@
 import Section from './Section';
 
+const reviewer = [
+  'WSDM 2022–2026', 'NeurIPS 2023–2025', 'SIGIR 2022–2025', 'CIKM 2020, 2025',
+  'KDD 2022–2025', 'ICLR 2024–2025', 'TheWebConf 2022–2025', 'COLING 2022, 2025',
+  'NAACL 2025', 'SemEval 2024–2025', 'ECML PKDD 2023–2024', 'EMNLP 2023–2024',
+  'IJCAI 2023', 'ACL 2023', 'TKDE 2021',
+];
+
 export default function Services() {
   return (
     <Section title="Services" id="services">
-      <div className="service-group">
+      <div className="group">
         <h3>Area Chair</h3>
-        <ul className="pc-list">
-          <li>ACL ARR 2023, 2025</li>
-        </ul>
+        <p className="line">ACL ARR 2023, 2025</p>
       </div>
-
-      <div className="service-group">
+      <div className="group">
         <h3>Organizer</h3>
-        <ul className="pc-list">
-          <li>
-            <a href="https://multiconer.github.io/organizers" target="_blank" rel="noopener noreferrer">
-              SemEval-2023: Task 2 (co-located with ACL-2023)
-            </a>
-          </li>
+        <p className="line">
+          <a href="https://multiconer.github.io/organizers" target="_blank" rel="noopener noreferrer">
+            SemEval-2023: Task 2 (co-located with ACL-2023)
+          </a>
+        </p>
+      </div>
+      <div className="group">
+        <h3>Program Committee / Reviewer</h3>
+        <ul className="tags">
+          {reviewer.map((r) => <li key={r}>{r}</li>)}
         </ul>
       </div>
-
-      <div className="service-group">
-        <h3>Program Committee/Reviewer</h3>
-        <ul className="pc-list">
-          <li>WSDM 2022-2026</li>
-          <li>NeurIPS 2023-2025</li>
-          <li>SIGIR 2022-2025</li>
-          <li>CIKM 2020, 2025</li>
-          <li>KDD 2022-2025</li>
-          <li>ICLR 2024-2025</li>
-          <li>TheWebConf 2022-2025</li>
-          <li>COLING 2022, 2025</li>
-          <li>NAACL 2025</li>
-          <li>SemEval 2024-2025</li>
-          <li>ECML PKDD 2023-2024</li>
-          <li>EMNLP 2023-2024</li>
-          <li>IJCAI 2023</li>
-          <li>ACL 2023</li>
-          <li>TKDE 2021</li>
-        </ul>
-      </div>
-
       <style jsx>{`
-        .service-group {
-            margin-bottom: 1.5rem;
-        }
+        .group { margin-bottom: 1.6rem; }
+        .group:last-child { margin-bottom: 0; }
         h3 {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+          font-size: 0.78rem;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 700;
+          color: var(--text-faint);
+          margin-bottom: 0.6rem;
         }
-        ul {
-          list-style: disc;
-          padding-left: 1.5rem;
-          color: #444;
+        .line {
+          font-size: 0.95rem;
+          color: var(--text-muted);
         }
-        a {
-            color: var(--accent);
-            text-decoration: none;
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          list-style: none;
+          padding: 0;
         }
-        a:hover {
-            text-decoration: underline;
+        .tags li {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          padding: 0.35rem 0.7rem;
+          border-radius: 999px;
+          font-size: 0.83rem;
+          color: var(--text-muted);
+          transition: border-color 0.18s ease, color 0.18s ease;
         }
-        .pc-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            list-style: none;
-            padding: 0;
-        }
-        .pc-list li {
-            background: white;
-            border: 1px solid var(--card-border);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: #555;
-            transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .pc-list li:hover {
-            transform: translateY(-2px);
-            color: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        .tags li:hover {
+          color: var(--accent);
+          border-color: var(--accent);
         }
       `}</style>
     </Section>

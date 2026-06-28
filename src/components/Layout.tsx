@@ -8,58 +8,53 @@ interface LayoutProps {
     home?: boolean;
 }
 
-export default function Layout({ children, home }: LayoutProps) {
-    const [activeSection, setActiveSection] = useState('');
+const SECTIONS = [
+    { id: 'about', label: 'About' },
+    { id: 'education', label: 'Education' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'publications', label: 'Publications' },
+    { id: 'services', label: 'Services' },
+    { id: 'awards', label: 'Awards' },
+    { id: 'hobbies', label: 'Hobbies' },
+];
 
-    // Use a ref to track if we are currently handling a manual click navigation
+function copyEmail(e: React.MouseEvent) {
+    e.preventDefault();
+    navigator.clipboard.writeText('zhiyuchen.ai@gmail.com');
+    window.location.href = 'mailto:zhiyuchen.ai@gmail.com';
+}
+
+export default function Layout({ children }: LayoutProps) {
+    const [activeSection, setActiveSection] = useState('about');
     const isManualScroll = useRef(false);
-    // Timeout ref for debouncing scroll end
     const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    // Extracted logic to check active section
     const checkActiveSection = () => {
-        const sections = ['about', 'education', 'experience', 'publications', 'services', 'awards'];
-        // Trigger point: 1/3 down the viewport or just below header
-        const scrollPosition = window.scrollY + (window.innerHeight / 3);
-
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
         let current = '';
-        for (const section of sections) {
-            const element = document.getElementById(section);
-            if (element) {
-                // Check if we have scrolled PAST the top of this section
-                if (element.offsetTop <= scrollPosition) {
-                    current = section;
-                }
+        for (const { id } of SECTIONS) {
+            const element = document.getElementById(id);
+            if (element && element.offsetTop <= scrollPosition) {
+                current = id;
             }
         }
-        if (current) {
-            setActiveSection(current);
-        }
+        if (current) setActiveSection(current);
     };
 
     useEffect(() => {
         const handleScroll = () => {
-            // Check if manually scrolling (clicked a link)
             if (isManualScroll.current) {
-                // Clear any existing unlock timer
                 if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-
-                // Set a new timer to unlock after scroll stops (100ms debounce)
                 scrollTimeout.current = setTimeout(() => {
                     isManualScroll.current = false;
-                    // Re-check where we landed
                     checkActiveSection();
                 }, 100);
                 return;
             }
-
             checkActiveSection();
         };
-
-        window.addEventListener('scroll', handleScroll);
-        // Call once on mount to set initial state
+        window.addEventListener('scroll', handleScroll, { passive: true });
         checkActiveSection();
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
             if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
@@ -69,8 +64,6 @@ export default function Layout({ children, home }: LayoutProps) {
     const handleNavClick = (section: string) => {
         isManualScroll.current = true;
         setActiveSection(section);
-
-        // Safety fallback: ensure lock releases eventually if no scroll happens
         if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
         scrollTimeout.current = setTimeout(() => {
             isManualScroll.current = false;
@@ -78,83 +71,66 @@ export default function Layout({ children, home }: LayoutProps) {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.shell}>
             <Head>
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-                <meta
-                    name="description"
-                    content="Zhiyu Chen's personal website and blog"
-                />
+                <meta name="description" content="Zhiyu Chen — Senior Applied Scientist at Amazon. Research in data mining, machine learning, NLP and information retrieval." />
                 <meta name="og:title" content="Zhiyu Chen" />
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
-            <header className={styles.header}>
-                <nav className={styles.nav}>
-                    <Link href="/" className={styles.logo}>Zhiyu Chen</Link>
-                    <div className={styles.links}>
-                        <Link
-                            href="#about"
-                            className={activeSection === 'about' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('about')}
-                        >About</Link>
-                        <Link
-                            href="#education"
-                            className={activeSection === 'education' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('education')}
-                        >
-                            <span className={styles.desktopText}>Education</span>
-                            <span className={styles.mobileText}>Edu</span>
-                        </Link>
-                        <Link
-                            href="#experience"
-                            className={activeSection === 'experience' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('experience')}
-                        >
-                            <span className={styles.desktopText}>Experience</span>
-                            <span className={styles.mobileText}>Exp</span>
-                        </Link>
-                        <Link
-                            href="#publications"
-                            className={activeSection === 'publications' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('publications')}
-                        >
-                            <span className={styles.desktopText}>Publications</span>
-                            <span className={styles.mobileText}>Pubs</span>
-                        </Link>
-                        <Link
-                            href="#services"
-                            className={activeSection === 'services' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('services')}
-                        >Services</Link>
-                        <Link
-                            href="#awards"
-                            className={activeSection === 'awards' ? styles.activeLink : ''}
-                            onClick={() => handleNavClick('awards')}
-                        >Awards</Link>
+            <aside className={styles.sidebar}>
+                <div className={styles.profile}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/images/profile.jpg" alt="Zhiyu Chen" className={styles.avatar} />
+                    <h1 className={styles.name}>Zhiyu Chen</h1>
+                    <p className={styles.nameCn}>陈知雨</p>
+                    <p className={styles.role}>Senior Applied Scientist</p>
+                    <p className={styles.org}>
+                        <span className={styles.dot} aria-hidden="true">●</span> Amazon · Seattle, WA
+                    </p>
+
+                    <nav className={styles.nav} aria-label="Sections">
+                        {SECTIONS.map(({ id, label }) => (
+                            <Link
+                                key={id}
+                                href={`#${id}`}
+                                className={`${styles.navLink} ${activeSection === id ? styles.navLinkActive : ''}`}
+                                onClick={() => handleNavClick(id)}
+                            >
+                                <span className={styles.navMarker} aria-hidden="true" />
+                                {label}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <div className={styles.socials}>
+                        <a href="mailto:zhiyuchen.ai@gmail.com" onClick={copyEmail} aria-label="Email" className={styles.socialLink}>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" className={styles.socialLink}>
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l9 4.5-9 4.5-9-4.5z" /><path d="M12 10v9" /><path d="M5 6.5V17c0 1.5 1.5 3 3.5 3s3.5-1.5 3.5-3v-6" /><path d="M22 6.5v4.5" /></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zhiyu-chen-ir-nlp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+                        </a>
+                        <a href="https://x.com/colozoy" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className={styles.socialLink}>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                        </a>
+                        <a href="https://www.instagram.com/colozoy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+                        </a>
                     </div>
-                </nav>
-            </header>
-
-            <main className={styles.main}>{children}</main>
-
-            <footer className={styles.footer}>
-                <p>© {new Date().getFullYear()} Zhiyu Chen. All rights reserved.</p>
-                <div className={styles.socials}>
-                    <a
-                        href="mailto:zhiyuchen.ai@gmail.com"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            navigator.clipboard.writeText("zhiyuchen.ai@gmail.com");
-                            alert("Email copied to clipboard: zhiyuchen.ai@gmail.com\nHappy to connect!");
-                            window.location.href = "mailto:zhiyuchen.ai@gmail.com";
-                        }}
-                    >Email</a>
-                    <a href="https://scholar.google.com/citations?user=KSBmL64AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                    <a href="https://www.linkedin.com/in/zhiyu-chen-ir-nlp/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://www.instagram.com/colozoy/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 </div>
-            </footer>
+            </aside>
+
+            <div className={styles.contentWrap}>
+                <main className={styles.main}>{children}</main>
+                <footer className={styles.footer}>
+                    <p>© {new Date().getFullYear()} Zhiyu Chen</p>
+                </footer>
+            </div>
         </div>
     );
 }

@@ -4,32 +4,43 @@ interface SectionProps {
   title: string;
   children: ReactNode;
   id?: string;
-  className?: string; // Allow passing extra classes
+  aside?: ReactNode;
+  className?: string;
 }
 
-export default function Section({ title, children, id, className = '' }: SectionProps) {
+export default function Section({ title, children, id, aside, className = '' }: SectionProps) {
   return (
     <section id={id} className={`section ${className}`}>
-      <h2 className="section-title">{title}</h2>
-      <div className="section-content">
-        {children}
-      </div>
+      <header className="section-head">
+        <h2 className="section-title">{title}</h2>
+        {aside && <span className="section-aside">{aside}</span>}
+      </header>
+      <div className="section-content">{children}</div>
       <style jsx>{`
         .section {
-          margin-bottom: 4rem;
-          scroll-margin-top: calc(var(--nav-height) + 2rem);
+          margin-bottom: 3.75rem;
+          scroll-margin-top: 1.5rem;
+        }
+        .section-head {
+          display: flex;
+          align-items: baseline;
+          gap: 0.75rem;
+          margin-bottom: 1.5rem;
         }
         .section-title {
-          font-size: 2rem;
-          margin-bottom: 1.5rem;
-          border-bottom: 2px solid rgba(0,0,0,0.05);
-          padding-bottom: 0.5rem;
-          display: inline-block;
-          color: var(--foreground);
-          font-weight: 700;
+          font-family: var(--font-serif);
+          font-size: 1.6rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: var(--text);
+        }
+        .section-aside {
+          font-size: 0.85rem;
+          color: var(--text-faint);
+          font-variant-numeric: tabular-nums;
         }
         .section-content {
-          color: #444;
+          color: var(--text-muted);
         }
       `}</style>
     </section>
