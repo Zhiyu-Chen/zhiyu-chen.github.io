@@ -22,6 +22,7 @@ export default function Awards() {
       <ul className="awards">
         {awards.map((a, i) => (
           <li key={i}>
+            <span className="marker" aria-hidden="true">🏆</span>
             <span className="year">{a.year}</span>
             <span className="text">{a.text}</span>
           </li>
@@ -33,22 +34,28 @@ export default function Awards() {
           padding: 0;
           display: flex;
           flex-direction: column;
+          gap: 0.55rem;
         }
         li {
           display: grid;
-          grid-template-columns: 70px 1fr;
-          gap: 1rem;
-          padding: 0.6rem 0;
-          border-bottom: 1px solid var(--border);
-          font-size: 0.93rem;
+          grid-template-columns: 1.4rem 3.4rem 1fr;
+          align-items: baseline;
+          gap: 0.5rem;
+          font-size: 0.94rem;
+          line-height: 1.5;
         }
-        li:last-child { border-bottom: none; }
+        .marker {
+          font-size: 0.8rem;
+        }
         .year {
           color: var(--text-faint);
           font-variant-numeric: tabular-nums;
           font-weight: 500;
+          font-size: 0.85rem;
         }
-        .text { color: var(--text-muted); }
+        .text {
+          color: var(--text-muted);
+        }
       `}</style>
     </Section>
   );

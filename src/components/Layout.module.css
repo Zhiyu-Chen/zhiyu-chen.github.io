@@ -81,8 +81,8 @@
 .navLink {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    padding: 0.4rem 0;
+    gap: 0.65rem;
+    padding: 0.42rem 0;
     font-size: 0.92rem;
     font-weight: 500;
     color: var(--text-faint);
@@ -94,19 +94,20 @@
 }
 
 .navMarker {
-    width: 18px;
-    height: 1.5px;
-    background: var(--border-strong);
-    transition: width 0.22s ease, background 0.22s ease;
+    width: 2px;
+    height: 14px;
+    border-radius: 2px;
+    background: transparent;
+    transition: background 0.22s ease, height 0.22s ease;
 }
 
 .navLinkActive {
-    color: var(--text);
+    color: var(--accent);
     font-weight: 600;
 }
 
 .navLinkActive .navMarker {
-    width: 30px;
+    height: 18px;
     background: var(--accent);
 }
 

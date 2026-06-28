@@ -1,17 +1,17 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Script from "next/script";
-import { Inter, Newsreader } from "next/font/google";
+import { Geist, Source_Serif_4 } from "next/font/google";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const serif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-serif-display",
   display: "swap",
@@ -19,7 +19,7 @@ const newsreader = Newsreader({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${inter.variable} ${newsreader.variable}`}>
+    <div className={`${geist.variable} ${serif.variable}`}>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-81JL9108VP"
         strategy="afterInteractive"
