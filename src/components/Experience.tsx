@@ -30,7 +30,7 @@ export default function Experience() {
             </div>
           </div>
           <ul className="bullets">
-            <li>Led a team solving <a href="https://super.gluebenchmark.com/leaderboard/" target="_blank" rel="noopener noreferrer">SuperGLUE benchmark tasks</a>, achieving a 2nd-place ranking, covered in <a href="https://tech.chinadaily.com.cn/a/202001/17/WS5e211ef9a3107bb6b579a768.html" target="_blank" rel="noopener noreferrer">China Daily (中国日报)</a> and <a href="https://finance.sina.cn/tech/2021-01-20/detail-ikftssan8774723.d.html?fromtech=1" target="_blank" rel="noopener noreferrer">Sina Tech (新浪科技)</a>.</li>
+            <li>Led a team solving <a href="https://super.gluebenchmark.com/leaderboard/" target="_blank" rel="noopener noreferrer">SuperGLUE benchmark tasks</a>, achieving a 2nd-place ranking, covered in <a href="https://ex.chinadaily.com.cn/exchange/partners/82/rss/channel/cn/columns/snl9a7/stories/WS5e211ef9a3107bb6b579a768.html" target="_blank" rel="noopener noreferrer">China Daily (中国日报)</a> and <a href="https://finance.sina.cn/tech/2021-01-20/detail-ikftssan8774723.d.html?fromtech=1" target="_blank" rel="noopener noreferrer">Sina Tech (新浪科技)</a>.</li>
             <li>Manager: Yinan Xu.</li>
           </ul>
         </div>
