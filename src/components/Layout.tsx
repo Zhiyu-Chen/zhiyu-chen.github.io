@@ -74,7 +74,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className={styles.shell}>
             <Head>
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-                <meta name="description" content="Zhiyu Chen — Senior Applied Scientist at Amazon. Research in data mining, machine learning, NLP and information retrieval." />
+                <meta name="description" content="Zhiyu Chen — Senior Applied Scientist at Amazon. Research in natural language processing and information retrieval, with a focus on foundation large language models (LLMs)." />
                 <meta name="og:title" content="Zhiyu Chen" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />

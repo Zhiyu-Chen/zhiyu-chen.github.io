@@ -10,8 +10,8 @@ export default function About() {
                 meaning <em>good rain knows the best time to fall</em>. I received my PhD from
                 Lehigh University in 2022, advised by
                 <a href="https://www.cse.lehigh.edu/~brian/" target="_blank" rel="noreferrer"> Prof. Brian D. Davison</a>.
-                My research interests span data mining, machine learning, natural language
-                processing and information retrieval.
+                My research interests lie in natural language processing and information
+                retrieval, with a focus on foundation large language models (LLMs).
             </p>
             <style jsx>{`
                 .lead {
