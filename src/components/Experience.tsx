@@ -54,7 +54,7 @@ export default function Experience() {
         .exp {
           display: flex;
           flex-direction: column;
-          gap: 2rem;
+          gap: 1.4rem;
           border-left: 1px solid var(--border);
           padding-left: 1.5rem;
         }

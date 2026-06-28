@@ -46,13 +46,13 @@ export default function Education() {
         .edu {
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.15rem;
         }
         .row {
           display: flex;
           align-items: flex-start;
           gap: 1rem;
-          padding: 1rem;
+          padding: 0.7rem 1rem;
           border-radius: var(--radius-md);
           border: 1px solid transparent;
           transition: border-color 0.2s ease, background 0.2s ease;

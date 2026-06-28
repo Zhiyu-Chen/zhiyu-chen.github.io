@@ -49,7 +49,7 @@ export default function Publications() {
         .pubs {
           display: flex;
           flex-direction: column;
-          gap: 2.25rem;
+          gap: 1.6rem;
         }
         .year-group {
           display: grid;
@@ -71,7 +71,7 @@ export default function Publications() {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 1.4rem;
+          gap: 1rem;
         }
         .pub-title {
           font-size: 1.02rem;
