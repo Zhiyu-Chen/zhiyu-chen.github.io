@@ -75,7 +75,7 @@ export default function Publications() {
         }
         .pub-title {
           font-size: 1.06rem;
-          font-weight: 600;
+          font-weight: 500;
           line-height: 1.4;
           color: var(--text);
         }

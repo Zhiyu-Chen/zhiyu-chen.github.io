@@ -1,15 +1,15 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Script from "next/script";
-import { Geist, Source_Serif_4 } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-geist",
   display: "swap",
 });
 
-const serif = Source_Serif_4({
+const serif = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -19,7 +19,7 @@ const serif = Source_Serif_4({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${geist.variable} ${serif.variable}`}>
+    <div className={`${inter.variable} ${serif.variable}`}>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-81JL9108VP"
         strategy="afterInteractive"
