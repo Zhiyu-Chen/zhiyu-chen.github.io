@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Layout home>
       <Head>
-        <title>Zhiyu Chen — Senior Applied Scientist</title>
+        <title>Zhiyu Chen</title>
       </Head>
       <About />
       <Education />
