@@ -103,6 +103,10 @@ export default function Layout({ children }: LayoutProps) {
                                 {label}
                             </Link>
                         ))}
+                        <Link href="/blog" className={styles.navLink}>
+                            <span className={styles.navMarker} aria-hidden="true" />
+                            Blog
+                        </Link>
                     </nav>
 
                     <div className={styles.socials}>
