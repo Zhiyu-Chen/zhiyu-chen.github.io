@@ -52,7 +52,7 @@ export const publications: Publication[] = [
   {
     title: 'Approximate Vector Set Search: A Bio-Inspired Approach for High-Dimensional Spaces',
     url: 'https://ieeexplore.ieee.org/document/11113061/',
-    authors: 'W. Yang, S. Wang, Z. Chen, Y. Sun, Z. Peng',
+    authors: 'Y. Li, S. Wang, Z. Chen, S. Chen, Z. Peng',
     venue: 'ICDE',
     tag: 'ICDE',
     year: 2025,
@@ -60,7 +60,7 @@ export const publications: Publication[] = [
   {
     title: 'Joinable Search Over Multi-Source Spatial Datasets: Overlap, Coverage, and Efficiency',
     url: 'https://www.computer.org/csdl/proceedings-article/icde/2025/360300a585/26FZzmi551S',
-    authors: 'Y. Li, S. Wang, Z. Chen, S. Chen, Z. Peng',
+    authors: 'W. Yang, S. Wang, Z. Chen, Y. Sun, Z. Peng',
     venue: 'ICDE',
     tag: 'ICDE',
     year: 2025,
@@ -68,7 +68,7 @@ export const publications: Publication[] = [
   {
     title: 'Identifying High Consideration E-Commerce Search Queries',
     url: 'https://aclanthology.org/2024.emnlp-industry.42/',
-    authors: 'Z. Chen, B. Fetahu, J. Choi, S. Malmasi',
+    authors: 'Z. Chen, J. Choi, B. Fetahu, S. Malmasi',
     venue: 'EMNLP (Industry)',
     tag: 'EMNLP',
     year: 2024,
@@ -90,7 +90,7 @@ export const publications: Publication[] = [
     year: 2024,
   },
   {
-    title: 'Training-free Optimization of Generative Recommender Systems using Large Language Model Optimizers',
+    title: 'Generative Explore-Exploit: Training-free Optimization of Generative Recommender Systems using LLM Optimizers',
     url: 'https://aclanthology.org/2024.acl-long.295/',
     authors: 'LK. Şenel, B. Fetahu, D. Yoshida, Z. Chen, G. Castellucci, N. Vedula, J. Choi, S. Malmasi',
     venue: 'ACL',
@@ -148,7 +148,7 @@ export const publications: Publication[] = [
   {
     title: 'StruBERT: Structure-aware BERT for Table Search and Matching',
     url: 'https://doi.org/10.1145/3485447.3511972',
-    authors: 'M. Trabelsi, Z. Chen, S. Zhang, J. Heflin, B. D. Davison',
+    authors: 'M. Trabelsi, Z. Chen, S. Zhang, B. D. Davison, J. Heflin',
     venue: 'WWW',
     tag: 'WWW',
     year: 2022,
@@ -164,7 +164,7 @@ export const publications: Publication[] = [
   {
     title: 'Neural Ranking Models for Document Retrieval',
     url: 'https://doi.org/10.1007/s10791-021-09398-0',
-    authors: 'M. Trabelsi, Z. Chen, J. Heflin, B.D. Davison',
+    authors: 'M. Trabelsi, Z. Chen, B.D. Davison, J. Heflin',
     venue: 'Information Retrieval Journal',
     tag: 'IRJ',
     year: 2021,
@@ -180,7 +180,7 @@ export const publications: Publication[] = [
   {
     title: 'A Hybrid Deep Model for Learning to Rank Data Tables',
     url: 'https://ieeexplore.ieee.org/document/9378185',
-    authors: 'M. Trabelsi, Z. Chen, J. Heflin, B.D. Davison',
+    authors: 'M. Trabelsi, Z. Chen, B.D. Davison, J. Heflin',
     venue: 'IEEE BigData',
     tag: 'BigData',
     year: 2020,
@@ -196,7 +196,7 @@ export const publications: Publication[] = [
   {
     title: 'Towards Knowledge Acquisition of Metadata on AI Progress',
     url: 'https://ceur-ws.org/Vol-2721/paper559.pdf',
-    authors: 'Z. Chen*, M. Trabelsi*, B. D. Davison, J. Heflin',
+    authors: 'Z. Chen*, M. Trabelsi*, J. Heflin, B. D. Davison',
     venue: 'ISWC (Demo)',
     tag: 'ISWC',
     year: 2020,
