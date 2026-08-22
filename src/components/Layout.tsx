@@ -107,6 +107,10 @@ export default function Layout({ children }: LayoutProps) {
                             <span className={styles.navMarker} aria-hidden="true" />
                             Blog
                         </Link>
+                        <Link href="/deadlines" className={styles.navLink}>
+                            <span className={styles.navMarker} aria-hidden="true" />
+                            Deadlines
+                        </Link>
                     </nav>
 
                     <div className={styles.socials}>
